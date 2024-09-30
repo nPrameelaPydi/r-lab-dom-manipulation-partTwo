@@ -2,9 +2,26 @@
 
 var menuLinks = [
     { text: 'about', href: '/about' },
-    { text: 'catalog', href: '/catalog' },
-    { text: 'orders', href: '/orders' },
-    { text: 'account', href: '/account' },
+    {
+        text: 'catalog', href: '#', subLinks: [
+            { text: 'all', href: '/catalog/all' },
+            { text: 'top selling', href: '/catalog/top' },
+            { text: 'search', href: '/catalog/search' },
+        ]
+    },
+    {
+        text: 'orders', href: '#', subLinks: [
+            { text: 'new', href: '/orders/new' },
+            { text: 'pending', href: '/orders/pending' },
+            { text: 'history', href: '/orders/history' },
+        ]
+    },
+    {
+        text: 'account', href: '#', subLinks: [
+            { text: 'profile', href: '/account/profile' },
+            { text: 'sign out', href: '/account/signout' },
+        ]
+    },
 ];
 
 //*****Part 1: Getting Started*********/
@@ -28,3 +45,32 @@ for (const ele of menuLinks) {
 }
 
 //*****Part 4: Adding Interactivity*****/
+/***********Part 2 - DOM Manipulation *******************/
+
+//Creating the Submenu
+const subMenuEl = document.getElementById('sub-menu');
+subMenuEl.style.height = '100%';
+subMenuEl.style.backgroundColor = 'var(--sub-menu-bg)';
+subMenuEl.classList.add("flex-around");
+subMenuEl.style.position = 'absolute';
+subMenuEl.style.top = '0';
+
+//Adding Menu Interaction
+
+navEl.addEventListener('click', (evt) => {
+    //console.log(`click detected`);
+    evt.preventDefault();
+    // console.log(evt.target);
+    //HTML is Case-Insensitive: In HTML, tag names are case-insensitive. This means that both <a> and <A> will be recognized as the same tag. 
+    //JavaScript's tagName Property: The tagName property of an element returns the tag name in uppercase. Therefore, it will always return 'A' for an anchor element.
+    if (evt.target.tagName !== 'A') {
+        return;
+    }
+    console.log(evt.target.textContent);
+});
+
+
+
+
+
+
