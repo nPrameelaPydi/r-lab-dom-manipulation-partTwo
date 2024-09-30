@@ -55,8 +55,10 @@ subMenuEl.classList.add("flex-around");
 subMenuEl.style.position = 'absolute';
 subMenuEl.style.top = '0';
 
-//Adding Menu Interaction
 
+//Adding Menu Interaction
+//Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks.
+const topMenuLinks = navEl.querySelectorAll('a');
 navEl.addEventListener('click', (evt) => {
     //console.log(`click detected`);
     evt.preventDefault();
@@ -67,8 +69,20 @@ navEl.addEventListener('click', (evt) => {
         return;
     }
     console.log(evt.target.textContent);
-});
 
+    evt.target.classList.toggle('active'); // toggles active class
+    //Removing active class from all other links
+    topMenuLinks.forEach(ele => {
+        if (ele !== evt.target) {
+            ele.classList.remove('active');
+        }
+    })
+
+
+
+
+
+});
 
 
 
