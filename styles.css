@@ -67,6 +67,6 @@ nav a {
     background-color: var(--sub-menu-bg);
 }
 
-h1::first-letter {
+/*h1::first-letter {
     text-transform: uppercase;
-}
+}*/

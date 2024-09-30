@@ -1,25 +1,25 @@
 //import "./styles.css";
 
 var menuLinks = [
-    { text: 'about', href: '/about' },
+    { text: 'About', href: '/about' },
     {
-        text: 'catalog', href: '#', subLinks: [
-            { text: 'all', href: '/catalog/all' },
-            { text: 'top selling', href: '/catalog/top' },
-            { text: 'search', href: '/catalog/search' },
+        text: 'Catalog', href: '#', subLinks: [
+            { text: 'All', href: '/catalog/all' },
+            { text: 'Top selling', href: '/catalog/top' },
+            { text: 'Search', href: '/catalog/search' },
         ]
     },
     {
-        text: 'orders', href: '#', subLinks: [
-            { text: 'new', href: '/orders/new' },
-            { text: 'pending', href: '/orders/pending' },
-            { text: 'history', href: '/orders/history' },
+        text: 'Orders', href: '#', subLinks: [
+            { text: 'New', href: '/orders/new' },
+            { text: 'Pending', href: '/orders/pending' },
+            { text: 'History', href: '/orders/history' },
         ]
     },
     {
-        text: 'account', href: '#', subLinks: [
-            { text: 'profile', href: '/account/profile' },
-            { text: 'sign out', href: '/account/signout' },
+        text: 'Account', href: '#', subLinks: [
+            { text: 'Profile', href: '/account/profile' },
+            { text: 'Sign out', href: '/account/signout' },
         ]
     },
 ];
@@ -113,14 +113,14 @@ subMenuEl.addEventListener('click', (e) => {
     if (e.target.tagName !== 'A') {
         return;
     }
-    //console.log(e.target.textContent);
-    console.log("Clicked link text: " + e.target.textContent);
+    console.log(e.target.textContent);
+    //console.log("Clicked link text: " + e.target.textContent);
     subMenuEl.style.top = '0';
 
     topMenuLinks.forEach(link => link.classList.remove('active'));
 
     mainEl.innerHTML = `<h1>${e.target.textContent}</h1>`;
-    console.log("Updated mainEl: " + mainEl.innerHTML);
+    //console.log("Updated mainEl: " + mainEl.innerHTML);
 
 });
 
