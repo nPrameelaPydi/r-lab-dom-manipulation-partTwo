@@ -56,13 +56,14 @@ subMenuEl.style.position = 'absolute';
 subMenuEl.style.top = '0';
 
 
-//Adding Menu Interaction
+//*******Adding Menu Interaction*******
 //Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks.
 const topMenuLinks = navEl.querySelectorAll('a');
+//console.log(topMenuLinks);
 navEl.addEventListener('click', (evt) => {
     //console.log(`click detected`);
     evt.preventDefault();
-    // console.log(evt.target);
+    //console.log(evt.target);
     //HTML is Case-Insensitive: In HTML, tag names are case-insensitive. This means that both <a> and <A> will be recognized as the same tag. 
     //JavaScript's tagName Property: The tagName property of an element returns the tag name in uppercase. Therefore, it will always return 'A' for an anchor element.
     if (evt.target.tagName !== 'A') {
@@ -79,6 +80,20 @@ navEl.addEventListener('click', (evt) => {
     })
 
 
+    //*****Adding Submenu Interaction*******
+    let link = evt.target;
+    //console.log(link);    
+
+    let clickedLink = menuLinks.find(item => item.text === link.textContent);
+    //console.log(clickedLink);
+
+    if ((link.classList.contains('active'))) {
+        if (clickedLink && clickedLink.subLinks) {
+            subMenuEl.style.top = '100%';
+        }
+    } else {
+        subMenuEl.style.top = '0';
+    }
 
 
 
