@@ -49,6 +49,7 @@ for (const ele of menuLinks) {
 
 //Creating the Submenu
 const subMenuEl = document.getElementById('sub-menu');
+//console.log(subMenuEl);
 subMenuEl.style.height = '100%';
 subMenuEl.style.backgroundColor = 'var(--sub-menu-bg)';
 subMenuEl.classList.add("flex-around");
@@ -60,6 +61,7 @@ subMenuEl.style.top = '0';
 //Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks.
 const topMenuLinks = navEl.querySelectorAll('a');
 //console.log(topMenuLinks);
+
 navEl.addEventListener('click', (evt) => {
     //console.log(`click detected`);
     evt.preventDefault();
@@ -90,6 +92,7 @@ navEl.addEventListener('click', (evt) => {
     if ((link.classList.contains('active'))) {
         if (clickedLink && clickedLink.subLinks) {
             subMenuEl.style.top = '100%';
+            buildSubMenu(clickedLink.subLinks);
         }
     } else {
         subMenuEl.style.top = '0';
@@ -98,6 +101,17 @@ navEl.addEventListener('click', (evt) => {
 
 
 });
+
+//helper function
+function buildSubMenu(subLinks) {
+    subMenuEl.innerHTML = '';
+    subLinks.forEach(subLink => {
+        const subMenuItem = document.createElement('a');
+        subMenuItem.setAttribute('href', subLink.href);
+        subMenuItem.textContent = subLink.text;
+        subMenuEl.appendChild(subMenuItem);
+    })
+}
 
 
 
