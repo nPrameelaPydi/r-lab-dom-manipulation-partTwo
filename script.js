@@ -97,10 +97,26 @@ navEl.addEventListener('click', (evt) => {
     } else {
         subMenuEl.style.top = '0';
     }
+});
 
 
+subMenuEl.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (e.target.tagName !== 'A') {
+        return;
+    }
+    //console.log(e.target.textContent);
+    console.log("Clicked link text: " + e.target.textContent);
+    subMenuEl.style.top = '0';
+
+    topMenuLinks.forEach(link => link.classList.remove('active'));
+
+    mainEl.innerHTML = `<h1>${e.target.textContent}</h1>`;
+
+    console.log("Updated mainEl: " + mainEl.innerHTML);
 
 });
+
 
 //helper function
 function buildSubMenu(subLinks) {
