@@ -89,13 +89,21 @@ navEl.addEventListener('click', (evt) => {
     let clickedLink = menuLinks.find(item => item.text === link.textContent);
     //console.log(clickedLink);
 
+    if (clickedLink) {
+        // Update the mainEl immediately
+        mainEl.innerHTML = `<h1>${clickedLink.text}</h1>`;
+        console.log("Updated mainEl: " + mainEl.innerHTML);
+    }
+
     if ((link.classList.contains('active'))) {
         if (clickedLink && clickedLink.subLinks) {
             subMenuEl.style.top = '100%';
             buildSubMenu(clickedLink.subLinks);
+
         }
     } else {
         subMenuEl.style.top = '0';
+        //mainEl.innerHTML = `<h1>${clickedLink.text}</h1>`;
     }
 });
 
@@ -112,7 +120,6 @@ subMenuEl.addEventListener('click', (e) => {
     topMenuLinks.forEach(link => link.classList.remove('active'));
 
     mainEl.innerHTML = `<h1>${e.target.textContent}</h1>`;
-
     console.log("Updated mainEl: " + mainEl.innerHTML);
 
 });

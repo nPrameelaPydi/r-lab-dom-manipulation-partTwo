@@ -66,3 +66,7 @@ nav a {
 #top-menu a:hover {
     background-color: var(--sub-menu-bg);
 }
+
+h1::first-letter {
+    text-transform: uppercase;
+}
